@@ -21,8 +21,8 @@ export const setFetchError = (error) => {
 export const addSmurf = (smurf) => {
   return { type: ADD_SMURF, payload: smurf };
 };
-export const setFormError = (error) => {
-  return { type: FORM_ERROR, payload: error }
+export const setFormError = (formError) => {
+  return { type: FORM_ERROR, payload: formError }
 }
 
 
