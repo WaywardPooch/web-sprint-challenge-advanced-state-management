@@ -1,17 +1,32 @@
+// Libraries
 import React from "react";
 import ReactDOM from "react-dom";
-
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
+// Reducers
+import reducer from "./reducers";
+// Styles
 import "./index.css";
+// Components
 import App from "./App";
 
-const { worker } = require('./mocks/browser');
+// Create redux store (w/ logger middleware)
+const store = createStore(reducer, applyMiddleware(logger, thunk));
+
+// Start Mock API
+const { worker } = require("./mocks/browser");
 worker.start();
 
-const rootElement = document.getElementById("root");
-
+// Render the Frontend (strict mode)
 ReactDOM.render(
-    <App />, 
-    rootElement
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
 //Task List:
