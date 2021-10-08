@@ -20,9 +20,14 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-
         <main>
-          <SmurfList />
+          {this.props.error ? (
+            <p>Error! Could not load smurfs. :-(</p>
+          ) : this.props.isLoading ? (
+            <p>Loading Smurfs List...</p>
+          ) : (
+            <SmurfList />
+          )}
           <AddForm />
         </main>
       </div>
