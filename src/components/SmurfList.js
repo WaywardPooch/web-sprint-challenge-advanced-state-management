@@ -3,9 +3,9 @@ import { connect } from "react-redux";
 import Smurf from "./Smurf";
 
 const SmurfList = (props) => {
-  const { smurfArray, isLoading, error } = props;
+  const { smurfArray, isLoading, fetchError } = props;
 
-  if (error.length > 0) {
+  if (fetchError.length > 0) {
     return <h1>Error! Could not load the list...</h1>;
   }
 
@@ -15,8 +15,8 @@ const SmurfList = (props) => {
 
   return (
     <div className="listContainer">
-      {smurfArray.map((smurf) => {
-        return <Smurf smurf={smurf} />;
+      {smurfArray.map((smurf, index) => {
+        return <Smurf key={index} smurf={smurf} />;
       })}
     </div>
   );
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
   return {
     smurfArray: state.smurfList,
     isLoading: state.isLoading,
-    error: state.error,
+    fetchError: state.fetchError,
   };
 };
 

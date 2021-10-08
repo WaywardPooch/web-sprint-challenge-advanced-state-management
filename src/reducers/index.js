@@ -3,6 +3,7 @@ import {
   FETCH_SUCCESS,
   FETCH_FAILURE,
   ADD_SMURF,
+  FORM_ERROR
 } from "./../actions";
 
 export const initialState = {
@@ -17,7 +18,8 @@ export const initialState = {
     },
   ],
   isLoading: false,
-  error: "",
+  fetchError: "",
+  formError: "",
 };
 
 const reducer = (state = initialState, action) => {
@@ -26,26 +28,31 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: true,
-        error: "",
+        fetchError: "",
       };
     case FETCH_SUCCESS:
       return {
         ...state,
         smurfList: action.payload,
         isLoading: false,
-        error: "",
+        fetchError: "",
       };
     case FETCH_FAILURE:
       return {
         ...state,
         smurfList: [],
         isLoading: false,
-        error: action.payload,
+        fetchError: action.payload,
       };
     case ADD_SMURF:
       return {
         ...state,
         smurfList: [...state.smurfList, action.payload],
+      };
+    case FORM_ERROR:
+      return {
+        ...state,
+        formError: action.payload,
       };
     default:
       return state;

@@ -6,6 +6,7 @@ export const FETCH_INIT = "FETCH_INIT";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 export const ADD_SMURF = "ADD_SMURF";
+export const FORM_ERROR ="FORM_ERROR";
 
 // Standard actions
 export const startFetch = () => {
@@ -14,12 +15,16 @@ export const startFetch = () => {
 export const updateSmurfs = (newSmurfs) => {
   return { type: FETCH_SUCCESS, payload: newSmurfs };
 };
-export const setError = (error) => {
+export const setFetchError = (error) => {
   return { type: FETCH_FAILURE, payload: error };
 };
 export const addSmurf = (smurf) => {
   return { type: ADD_SMURF, payload: smurf };
 };
+export const setFormError = (error) => {
+  return { type: FORM_ERROR, payload: error }
+}
+
 
 // Thunk actions
 export const fetchSmurfs = () => {
@@ -31,7 +36,7 @@ export const fetchSmurfs = () => {
         dispatch(updateSmurfs(response.data));
       })
       .catch((error) => {
-        dispatch(setError(error));
+        dispatch(setFetchError(error));
       });
   };
 };
