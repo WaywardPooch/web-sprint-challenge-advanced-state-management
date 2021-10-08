@@ -25,9 +25,11 @@ export const getSmurfs = () => {
       .get("http://localhost:3333/smurfs")
       .then((response) => {
         console.log(response.data);
+        // dispatch(updateSmurfs(response.data));
       })
       .catch((error) => {
         console.error(error);
+        // dispatch(showError(error));
       });
   };
 };
