@@ -5,8 +5,9 @@ import axios from "axios";
 export const FETCH_INIT = "FETCH_INIT";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
+export const ADD_SMURF = "ADD_SMURF";
 
-// Simple actions
+// Standard actions
 export const startFetch = () => {
   return { type: FETCH_INIT };
 };
@@ -16,8 +17,11 @@ export const updateSmurfs = (newSmurfs) => {
 export const showError = (error) => {
   return { type: FETCH_FAILURE, payload: error };
 };
+export const addSmurf = (smurf) => {
+  return { type: ADD_SMURF, payload: smurf };
+};
 
-// Complex actions
+// Thunk actions
 export const fetchSmurfs = () => {
   return (dispatch) => {
     dispatch(startFetch());
