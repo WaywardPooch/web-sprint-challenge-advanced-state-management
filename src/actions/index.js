@@ -14,7 +14,7 @@ export const startFetch = () => {
 export const updateSmurfs = (newSmurfs) => {
   return { type: FETCH_SUCCESS, payload: newSmurfs };
 };
-export const showError = (error) => {
+export const setError = (error) => {
   return { type: FETCH_FAILURE, payload: error };
 };
 export const addSmurf = (smurf) => {
@@ -31,7 +31,7 @@ export const fetchSmurfs = () => {
         dispatch(updateSmurfs(response.data));
       })
       .catch((error) => {
-        dispatch(showError(error));
+        dispatch(setError(error));
       });
   };
 };
