@@ -7,7 +7,7 @@ import {
   FORM_ERROR
 } from "./../actions";
 
-
+// Set up an initial state
 export const initialState = {
   smurfList: [],
   isLoading: false,
@@ -15,6 +15,7 @@ export const initialState = {
   formError: "",
 };
 
+// Set up the reducer
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_INIT:

@@ -1,19 +1,24 @@
+// Libraries
 import React from "react";
 import { connect } from "react-redux";
+// Components
 import Smurf from "./Smurf";
 
 const SmurfList = (props) => {
   // Prop destructuring
   const { smurfArray, isLoading, fetchError } = props;
 
+  // Display error prompting page refresh on fetch failure
   if (fetchError) {
     return <h2>List Fetch Error! Please refresh!</h2>;
   }
 
+  // Display loading message if fetch is not complete
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
 
+  // If no errors and loading finished; display the list
   return (
     <div className="listContainer">
       {smurfArray.map((smurf) => {
@@ -23,6 +28,7 @@ const SmurfList = (props) => {
   );
 };
 
+// Make necessary slices of state available here
 const mapStateToProps = (state) => {
   return {
     smurfArray: state.smurfList,
@@ -31,6 +37,7 @@ const mapStateToProps = (state) => {
   };
 };
 
+// Connect Redux to this component
 export default connect(mapStateToProps)(SmurfList);
 
 //Task List:

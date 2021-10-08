@@ -1,27 +1,29 @@
+// Libraries
 import React, { useState } from "react";
 import { connect } from "react-redux";
-
+// Actions
 import { setFormError, addSmurf } from "../actions";
 
 const AddForm = (props) => {
+  // Prop destructuring
   const { errorMessage, setFormError, addSmurf } = props;
 
+  // Form state setup
   const initialState = {
     name: "",
     position: "",
     nickname: "",
     description: "",
   };
-
   const [state, setState] = useState(initialState);
 
+  // Event Handlers
   const handleChange = (e) => {
     setState({
       ...state,
       [e.target.name]: e.target.value,
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (state.name === "" || state.position === "" || state.nickname === "") {
@@ -91,12 +93,14 @@ const AddForm = (props) => {
   );
 };
 
+// Make global state properties available here
 const mapStateToProps = (state) => {
   return {
     errorMessage: state.formError,
   };
 };
 
+// Connect Redux to this component
 export default connect(mapStateToProps, { setFormError, addSmurf })(AddForm);
 
 //Task List:

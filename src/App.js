@@ -12,10 +12,12 @@ import Header from "./components/Header";
 import { fetchSmurfs } from "./actions";
 
 class App extends Component {
+  // On mount, fetch the smurfs from the API
   componentDidMount() {
     this.props.fetchSmurfs();
   }
 
+  // Render the app
   render() {
     return (
       <div className="App">
@@ -29,6 +31,7 @@ class App extends Component {
   }
 }
 
+// Make global state props available here
 const mapStateToProps = (state) => {
   return {
     smurfList: state.smurfList,
@@ -37,6 +40,7 @@ const mapStateToProps = (state) => {
   };
 };
 
+// Connect Redux to the app component
 export default connect(mapStateToProps, { fetchSmurfs })(App);
 
 //Task List:
