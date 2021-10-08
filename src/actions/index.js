@@ -1,12 +1,13 @@
 // Libraries
 import axios from "axios";
+import { v4 as uuid } from 'uuid';
 
 // Constants
 export const FETCH_INIT = "FETCH_INIT";
 export const FETCH_SUCCESS = "FETCH_SUCCESS";
 export const FETCH_FAILURE = "FETCH_FAILURE";
 export const ADD_SMURF = "ADD_SMURF";
-export const FORM_ERROR ="FORM_ERROR";
+export const FORM_ERROR = "FORM_ERROR";
 
 // Standard actions
 export const startFetch = () => {
@@ -19,12 +20,20 @@ export const setFetchError = (error) => {
   return { type: FETCH_FAILURE, payload: error };
 };
 export const addSmurf = (smurf) => {
-  return { type: ADD_SMURF, payload: smurf };
+  return {
+    type: ADD_SMURF,
+    payload: {
+      id: uuid(),
+      name: smurf.name,
+      position: smurf.position,
+      nickname: smurf.nickname,
+      description: smurf.description,
+    },
+  };
 };
 export const setFormError = (formError) => {
-  return { type: FORM_ERROR, payload: formError }
-}
-
+  return { type: FORM_ERROR, payload: formError };
+};
 
 // Thunk actions
 export const fetchSmurfs = () => {
