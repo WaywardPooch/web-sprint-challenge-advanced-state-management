@@ -3,9 +3,10 @@ import { connect } from "react-redux";
 import Smurf from "./Smurf";
 
 const SmurfList = (props) => {
+  // Prop destructuring
   const { smurfArray, isLoading, fetchError } = props;
 
-  if (fetchError.length > 0) {
+  if (fetchError) {
     return <h1>Error! Could not load the list...</h1>;
   }
 
