@@ -11,21 +11,26 @@ const reducer = (state = initialState, action) => {
     case FETCH_INIT:
       return {
         ...state,
+        smurfList: [],
         isLoading: true,
         error: ""
       };
     case FETCH_SUCCESS:
       return {
         ...state,
+        smurfList: action.payload,
         isLoading: false,
         error: ""
       };
     case FETCH_FAILURE:
       return {
         ...state,
+        smurfList: [],
         isLoading: false,
         error: action.payload
       }
+    default:
+      return state;
   }
 };
 
