@@ -18,18 +18,16 @@ export const showError = (error) => {
 };
 
 // Complex actions
-export const getSmurfs = () => {
+export const fetchSmurfs = () => {
   return (dispatch) => {
     dispatch(startFetch());
     axios
       .get("http://localhost:3333/smurfs")
       .then((response) => {
-        console.log(response.data);
-        // dispatch(updateSmurfs(response.data));
+        dispatch(updateSmurfs(response.data));
       })
       .catch((error) => {
-        console.error(error);
-        // dispatch(showError(error));
+        dispatch(showError(error));
       });
   };
 };

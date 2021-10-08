@@ -5,6 +5,10 @@ import Smurf from "./Smurf";
 const SmurfList = (props) => {
   const { smurfArray, isLoading, error } = props;
 
+  if (error.length > 0) {
+    return <h1>Error! Could not load the list...</h1>;
+  }
+
   if (isLoading) {
     return <h1>Loading...</h1>;
   }

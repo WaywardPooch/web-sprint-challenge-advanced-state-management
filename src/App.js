@@ -9,11 +9,11 @@ import AddForm from "./components/AddForm";
 import SmurfList from "./components/SmurfList";
 import Header from "./components/Header";
 // Actions
-import { getSmurfs } from "./actions";
+import { fetchSmurfs } from "./actions";
 
 class App extends Component {
   componentDidMount() {
-    getSmurfs();
+    this.props.fetchSmurfs();
   }
 
   render() {
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { getSmurfs })(App);
+export default connect(mapStateToProps, { fetchSmurfs })(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.
