@@ -12,7 +12,7 @@ import "./index.css";
 // Components
 import App from "./App";
 
-// Create redux store (w/ logger middleware)
+// Create redux store (w/ logger & thunk middleware)
 const store = createStore(reducer, applyMiddleware(logger, thunk));
 
 // Start Mock API
