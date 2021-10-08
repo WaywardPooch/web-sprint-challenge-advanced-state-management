@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { setError, addSmurf } from "../actions";
 
 const AddForm = (props) => {
-  const { errorMessage } = props;
+  const { errorMessage, smurfList } = props;
 
   const initialState = {
     name: "",
@@ -27,8 +27,12 @@ const AddForm = (props) => {
     if (state.name === "" || state.position === "" || state.nickname === "") {
       //add in error action
       setError("Invalid form inputs; fill it out all the way!");
+      console.log("========== NEW SMURF ==========",state);
+      console.log("========== SMURF LIST ==========", smurfList);
     } else {
       addSmurf(state);
+      console.log("========== NEW SMURF ==========",state);
+      console.log("========== SMURF LIST ==========", smurfList);
       setState(initialState);
     }
   };
@@ -86,7 +90,7 @@ const AddForm = (props) => {
             Error: {errorMessage}
           </div>
         )}
-        <button>Submit Smurf</button>
+        <button type="submit">Submit Smurf</button>
       </form>
     </section>
   );
@@ -94,6 +98,7 @@ const AddForm = (props) => {
 
 const mapStateToProps = (state) => {
   return {
+    smurfList: state.smurfList,
     errorMessage: state.error,
   };
 };
