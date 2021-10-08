@@ -7,7 +7,7 @@ const SmurfList = (props) => {
   const { smurfArray, isLoading, fetchError } = props;
 
   if (fetchError) {
-    return <h1>Error! Could not load the list...</h1>;
+    return <h2>List Fetch Error! Please refresh!</h2>;
   }
 
   if (isLoading) {
