@@ -25,7 +25,7 @@ const AddForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (state.name === "" || state.position === "" || state.nickname === "") {
-      setFormError("Invalid form inputs; fill it out all the way!");
+      setFormError("Invalid form inputs; smurf requires a name, nickname, and position!");
     } else {
       addSmurf(state);
       setState(initialState);
@@ -85,7 +85,7 @@ const AddForm = (props) => {
             Error: {errorMessage}
           </div>
         )}
-        <button type="submit">Submit Smurf</button>
+        <button>Submit Smurf</button>
       </form>
     </section>
   );
