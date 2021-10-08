@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { setFormError, addSmurf } from "../actions";
 
 const AddForm = (props) => {
-  const { errorMessage, setFormError } = props;
+  const { errorMessage, setFormError, addSmurf } = props;
 
   const initialState = {
     name: "",
